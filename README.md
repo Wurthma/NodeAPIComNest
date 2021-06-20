@@ -4,6 +4,12 @@ API PetShop project with [Nest](https://github.com/nestjs/nest) framework TypeSc
 
 ## Basics of Nest
 
+- Criando módulos usando CLI:
+    - `nest generate module backoffice`
+
+- Criando controller usando CLI:
+    - `nest generate controller customer`
+
 ## Installation
 
 ```bash
