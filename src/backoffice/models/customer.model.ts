@@ -1,6 +1,6 @@
-import { Address } from 'cluster';
 import { CreditCard } from './credit-card.model';
 import { Pet } from './pet.model';
+import { Address } from './address.model';
 
 export class Customer {
     constructor(public name: string,
