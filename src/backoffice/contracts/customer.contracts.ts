@@ -1,7 +1,9 @@
+import { Injectable } from "@nestjs/common";
 import Joi from "joi";
 import { Customer } from "../models/customer.model";
 import { Contract } from "./contracts";
 
+@Injectable()
 export class CreateCustomerContract implements Contract {
     errors: any[];
 
