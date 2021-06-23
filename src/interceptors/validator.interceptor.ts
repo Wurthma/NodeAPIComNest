@@ -18,7 +18,7 @@ export class ValidatorInterceptor<T> implements NestInterceptor<T, Response<T>> 
     }
 
     intercept(context: ExecutionContext, next: CallHandler): Observable<Response<T>> {
-        const body = context.switchToHttp().getRequest().Body;
+        const body = context.switchToHttp().getRequest().body;
         const valid = this.contract.validate(body);
 
         if (!valid) {
