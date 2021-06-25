@@ -12,7 +12,6 @@ export class CreateCustomerContract implements Contract {
         // Contrato
         const schema = Joi.object({
             name: Joi.string()
-                .alphanum()
                 .min(3)
                 .max(30)
                 .required(),
@@ -30,7 +29,7 @@ export class CreateCustomerContract implements Contract {
                 .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
         });
         
-        const { error, value } = schema.validate(model);
+        const { error } = schema.validate(model);
 
         if (error) 
         {
