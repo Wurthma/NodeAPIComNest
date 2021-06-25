@@ -47,3 +47,6 @@ $ npm run test:cov
 - joi for validations:
     - `npm install joi --save`
     - `npm install @hapi/joi --save-dev`
+
+- Mongoose for MongoDB
+    - `npm i --save @nestjs/mongoose mongoose`
