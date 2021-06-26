@@ -21,15 +21,20 @@ export const CustomerSchema = Joi.object({
     email: Joi.string()
         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
 
-    pets: Joi.array().items(PetSchema),
+    password: Joi.string()
+        .min(6)
+        .max(30)
+        .required(),
 
-    billingAddress: AddressSchema,
+    // pets: Joi.array().items(PetSchema),
 
-    shippingAddress: AddressSchema,
+    // billingAddress: AddressSchema,
 
-    creditCard: CreditCardSchema,
+    // shippingAddress: AddressSchema,
 
-    user: UserSchema,
+    // creditCard: CreditCardSchema,
+
+    // user: UserSchema,
 });
 
 @Injectable()
