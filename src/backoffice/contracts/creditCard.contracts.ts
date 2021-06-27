@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import * as Joi from '@hapi/joi';
 import { ContractBase } from "./contractsBase";
 
-export const CreditCardSchema = Joi.object({
+const CreditContract = Joi.object({
     holder: Joi.string()
         .min(3)
         .max(30)
@@ -21,6 +21,6 @@ export const CreditCardSchema = Joi.object({
 @Injectable()
 export class CreateCreditContract extends ContractBase {
     constructor() {
-        super(CreditCardSchema);
+        super(CreditContract);
     }
 }

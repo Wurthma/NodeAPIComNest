@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import * as Joi from '@hapi/joi';
 import { ContractBase } from "./contractsBase";
 
-export const AddressSchema = Joi.object({
+const AddressContract = Joi.object({
     zipCode: Joi.string()
         .min(8)
         .max(15)
@@ -47,6 +47,6 @@ export const AddressSchema = Joi.object({
 @Injectable()
 export class CreateAddressContract extends ContractBase {
     constructor() {
-        super(AddressSchema);
+        super(AddressContract);
     }
 }

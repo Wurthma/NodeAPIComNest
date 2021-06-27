@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import * as Joi from '@hapi/joi';
 import { ContractBase } from "./contractsBase";
 
-export const UserSchema = Joi.object({
+const UserContract = Joi.object({
     username: Joi.string()
         .min(3)
         .max(20)
@@ -19,6 +19,6 @@ export const UserSchema = Joi.object({
 @Injectable()
 export class CreateUserContract extends ContractBase {
     constructor() {
-        super(UserSchema);
+        super(UserContract);
     }
 }
