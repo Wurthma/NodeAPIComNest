@@ -50,3 +50,24 @@ $ npm run test:cov
 
 - Mongoose for MongoDB
     - `npm i --save @nestjs/mongoose mongoose`
+
+## MongoDB & Docker
+- The application makes use of MongoDB with docker. To install the latest version of mongodb with docker (latest) use the command:
+	- `docker pull mongo`
+- To create a container named mongodb, run the command below replacing the values of the `MONGO_INITDB_ROOT_USERNAME` and `MONGO_INITDB_ROOT_PASSWORD` fields to the desired username and password.
+	- `docker run --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=dbuser -e MONGO_INITDB_ROOT_PASSWORD=myPassword mongo`
+	- Command to stop execution: `docker stop mongodb`
+	- To start the same container again: `docker start mongodb`
+
+## Sensitive data
+- For the application to work correctly it is necessary to create the src\secrets.ts file containing the sensitive data used by the application. The file must contain the following properties:
+
+```typescript
+export const GLOBAL_SECRETS = {
+    mongodbUser: 'wurthmann',
+    mongodbPassword: '5777308',
+    mongodbHost: 'localhost',
+    mongodbPort: '27017',
+    saltKey: 'SOME GUID SALT KEY'
+}
+```
