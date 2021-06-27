@@ -3,7 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { BackofficeModule } from './backoffice/backoffice.module';
 import { GLOBAL_SECRETS } from './secrets';
 
-const connectionString = `mongodb://${GLOBAL_SECRETS.mongodbUser}:${GLOBAL_SECRETS.mongodbPassword}@${GLOBAL_SECRETS.mongodbHost}:${GLOBAL_SECRETS.mongodbPort}/ndstr?authSource=admin`;
+const connectionString = `mongodb://${GLOBAL_SECRETS.mongodbUser}:${GLOBAL_SECRETS.mongodbPassword}@${GLOBAL_SECRETS.mongodbHost}:${GLOBAL_SECRETS.mongodbPort}/petshop?authSource=admin`;
 
 @Module({
   imports: [
