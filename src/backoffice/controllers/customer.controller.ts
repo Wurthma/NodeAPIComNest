@@ -14,9 +14,8 @@ import { CustomerService } from '../services/customer.service';
 @Controller('v1/customers')
 export class CustomerController {
   constructor(private readonly accountService: AccountService,
-    private readonly customerService: CustomerService,) 
-  {}
-  
+    private readonly customerService: CustomerService,) { }
+
   @Get()
   get() {
     return new Result(null, true, [], null);
@@ -30,19 +29,17 @@ export class CustomerController {
   @Post()
   @UseInterceptors(new ValidatorInterceptor(new CreateCustomerContract()))
   async post(@Body() model: CreateCustomerDto) {
-    try
-    {
+    try {
       const user = await this.accountService.create(
         new User(model.document, model.password, true)
       );
-  
+
       const customer = new Customer(model.name, model.document, model.email, null, null, null, null, user);
       const customerResult = await this.customerService.create(customer);
-  
+
       return new Result('Cliente criado com sucesso!', true, customerResult, null);
     }
-    catch (error)
-    {
+    catch (error) {
       // Rollback manual
       throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
     }
@@ -50,14 +47,26 @@ export class CustomerController {
 
   @Post(':document/addresses/billing')
   @UseInterceptors(new ValidatorInterceptor(new CreateAddressContract()))
-  async addBillingAddress(@Param('document') document,@Body() model: CreateAddressDto) {
-    try
-    {
-      const result = await this.customerService.addBillingAddress(document, model);
-      return result;
+  async addBillingAddress(@Param('document') document: string, @Body() model: CreateAddressDto)
+  {
+    try {
+      await this.customerService.addBillingAddress(document, model);
+      return new Result('Endereço incluído com sucesso.', true, model, null);
     }
-    catch (error)
-    {
+    catch (error) {
+      throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @Post(':document/addresses/shipping')
+  @UseInterceptors(new ValidatorInterceptor(new CreateAddressContract()))
+  async addShippingAddress(@Param('document') document: string, @Body() model: CreateAddressDto)
+  {
+    try {
+      await this.customerService.addShippingAddress(document, model);
+      return new Result('Endereço incluído com sucesso.', true, model, null);
+    }
+    catch (error) {
       throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
     }
   }
