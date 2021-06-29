@@ -2,8 +2,10 @@ import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, 
 import { ValidatorInterceptor } from 'src/interceptors/validator.interceptor';
 import { CreateAddressContract } from '../contracts/customer/create-address.contract';
 import { CreateCustomerContract } from '../contracts/customer/create-customer.contract';
+import { CreatePetContract } from '../contracts/customer/create-pet.contract';
 import { CreateAddressDto } from '../dtos/create-address-dto';
 import { CreateCustomerDto } from '../dtos/create-customer-dto';
+import { CreatePetDto } from '../dtos/create-pet-dto';
 import { Customer } from '../models/customer.model';
 import { Result } from '../models/result.models';
 import { User } from '../models/user.model';
@@ -65,6 +67,32 @@ export class CustomerController {
     try {
       await this.customerService.addShippingAddress(document, model);
       return new Result('Endereço incluído com sucesso.', true, model, null);
+    }
+    catch (error) {
+      throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @Post(':document/pets')
+  @UseInterceptors(new ValidatorInterceptor(new CreatePetContract()))
+  async createPet(@Param('document') document: string, @Body() model: CreatePetDto)
+  {
+    try {
+      await this.customerService.createPet(document, model);
+      return new Result('Pet incluído com sucesso.', true, model, null);
+    }
+    catch (error) {
+      throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @Put(':document/pets/:id')
+  @UseInterceptors(new ValidatorInterceptor(new CreatePetContract()))
+  async updatePet(@Param('document') document: string, @Param('id') id: string, @Body() model: CreatePetDto)
+  {
+    try {
+      await this.customerService.updatePet(document, id, model);
+      return new Result('Pet atualizado com sucesso.', true, model, null);
     }
     catch (error) {
       throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
