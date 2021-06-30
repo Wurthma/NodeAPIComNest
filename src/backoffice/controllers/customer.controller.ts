@@ -3,9 +3,10 @@ import { ValidatorInterceptor } from 'src/interceptors/validator.interceptor';
 import { CreateAddressContract } from '../contracts/customer/create-address.contract';
 import { CreateCustomerContract } from '../contracts/customer/create-customer.contract';
 import { CreatePetContract } from '../contracts/customer/create-pet.contract';
-import { CreateAddressDto } from '../dtos/create-address-dto';
-import { CreateCustomerDto } from '../dtos/create-customer-dto';
-import { CreatePetDto } from '../dtos/create-pet-dto';
+import { CreateAddressDto } from '../dtos/create-address.dto';
+import { CreateCustomerDto } from '../dtos/create-customer.dto';
+import { CreatePetDto } from '../dtos/create-pet.dto';
+import { QueryDto } from '../dtos/query.dto';
 import { Customer } from '../models/customer.model';
 import { Result } from '../models/result.models';
 import { User } from '../models/user.model';
@@ -30,9 +31,10 @@ export class CustomerController {
     return new Result('Busca realizada com sucesso!', true, customer, null);
   }
 
-  @Get(':document')
-  getById(@Param('document') document) {
-    return new Result(null, true, {}, null);
+  @Post('query')
+  async query(@Body() queryDto: QueryDto) {
+    var customers = await this.customerService.query(queryDto);
+    return new Result('Consulta realizada com sucesso', true, customers, null);
   }
 
   @Post()
