@@ -15,24 +15,6 @@ export class CustomerService {
         return await customer.save();
     }
 
-    async addBillingAddress(document: string, data: Address): Promise<Customer> {
-        return await this.model.findOneAndUpdate({ document }, {
-            $set: {
-                billingAddress: data,
-            },
-        },
-            { upsert: true });
-    }
-
-    async addShippingAddress(document: string, data: Address): Promise<Customer> {
-        return await this.model.findOneAndUpdate({ document }, {
-            $set: {
-                shippingAddress: data,
-            },
-        },
-            { upsert: true });
-    }
-
     async createPet(document: string, data: Pet): Promise<Customer> {
         return await this.model.findOneAndUpdate({ document }, {
             $push: {

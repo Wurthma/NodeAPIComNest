@@ -11,13 +11,15 @@ import { Customer } from '../models/customer.model';
 import { Result } from '../models/result.models';
 import { User } from '../models/user.model';
 import { AccountService } from '../services/account.service';
+import { AddressService } from '../services/address.service';
 import { CustomerService } from '../services/customer.service';
 
 // localhost:3000/v1/customers
 @Controller('v1/customers')
 export class CustomerController {
   constructor(private readonly accountService: AccountService,
-    private readonly customerService: CustomerService,) { }
+    private readonly customerService: CustomerService,
+    private readonly addressService: AddressService,) { }
 
   @Get()
   async getAll() {
@@ -60,7 +62,7 @@ export class CustomerController {
   @UseInterceptors(new ValidatorInterceptor(new CreateAddressContract()))
   async addBillingAddress(@Param('document') document: string, @Body() model: CreateAddressDto) {
     try {
-      await this.customerService.addBillingAddress(document, model);
+      await this.addressService.addBillingAddress(document, model);
       return new Result('Endereço incluído com sucesso.', true, model, null);
     }
     catch (error) {
@@ -72,7 +74,7 @@ export class CustomerController {
   @UseInterceptors(new ValidatorInterceptor(new CreateAddressContract()))
   async addShippingAddress(@Param('document') document: string, @Body() model: CreateAddressDto) {
     try {
-      await this.customerService.addShippingAddress(document, model);
+      await this.addressService.addShippingAddress(document, model);
       return new Result('Endereço incluído com sucesso.', true, model, null);
     }
     catch (error) {
