@@ -1,23 +1,19 @@
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { ValidatorInterceptor } from 'src/interceptors/validator.interceptor';
 import { CreateCustomerContract } from '../contracts/customer/create-customer.contract';
-import { CreatePetContract } from '../contracts/customer/create-pet.contract';
 import { CreateCustomerDto } from '../dtos/create-customer.dto';
-import { CreatePetDto } from '../dtos/create-pet.dto';
 import { QueryDto } from '../dtos/query.dto';
 import { Customer } from '../models/customer.model';
 import { Result } from '../models/result.models';
 import { User } from '../models/user.model';
 import { AccountService } from '../services/account.service';
 import { CustomerService } from '../services/customer.service';
-import { PetService } from '../services/pet.service';
 
 // localhost:3000/v1/customers
 @Controller('v1/customers')
 export class CustomerController {
   constructor(private readonly accountService: AccountService,
-    private readonly customerService: CustomerService,
-    private readonly petService: PetService,) { }
+    private readonly customerService: CustomerService,) { }
 
   @Get()
   async getAll() {
@@ -52,30 +48,6 @@ export class CustomerController {
     }
     catch (error) {
       // Rollback manual
-      throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
-    }
-  }
-
-  @Post(':document/pets')
-  @UseInterceptors(new ValidatorInterceptor(new CreatePetContract()))
-  async createPet(@Param('document') document: string, @Body() model: CreatePetDto) {
-    try {
-      await this.petService.createPet(document, model);
-      return new Result('Pet incluído com sucesso.', true, model, null);
-    }
-    catch (error) {
-      throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
-    }
-  }
-
-  @Put(':document/pets/:id')
-  @UseInterceptors(new ValidatorInterceptor(new CreatePetContract()))
-  async updatePet(@Param('document') document: string, @Param('id') id: string, @Body() model: CreatePetDto) {
-    try {
-      await this.petService.updatePet(document, id, model);
-      return new Result('Pet atualizado com sucesso.', true, model, null);
-    }
-    catch (error) {
       throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
     }
   }
