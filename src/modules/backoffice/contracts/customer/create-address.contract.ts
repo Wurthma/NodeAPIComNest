@@ -1,5 +1,5 @@
-import { Injectable } from "@nestjs/common";
 import * as Joi from '@hapi/joi';
+import { Injectable } from "@nestjs/common";
 import { ContractBase } from "../contractsBase";
 
 const AddressContract = Joi.object({

@@ -1,9 +1,9 @@
 import { CallHandler } from "@nestjs/common";
 import { ExecutionContext, HttpException, HttpStatus, Injectable, NestInterceptor } from "@nestjs/common";
 import { Observable } from "rxjs";
-import { Contract } from "src/backoffice/contracts/contracts";
-import { Result } from "src/backoffice/models/result.models";
 import { map } from 'rxjs/operators';
+import { Contract } from "src/modules/backoffice/contracts/contracts";
+import { Result } from "src/modules/backoffice/models/result.models";
 
 export interface Response<T> {
     data: T;

@@ -3,7 +3,7 @@ import { Customer } from "../models/customer.model";
 import { Contract } from "./contracts";
 
 @Injectable()
-export class ContractBase implements Contract {
+export abstract class ContractBase implements Contract {
     errors: any[];
 
     constructor(private schema: any) { }
