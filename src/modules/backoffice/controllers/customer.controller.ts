@@ -13,6 +13,7 @@ import { User } from '../models/user.model';
 import { AccountService } from '../services/account.service';
 import { AddressService } from '../services/address.service';
 import { CustomerService } from '../services/customer.service';
+import { PetService } from '../services/pet.service';
 
 // localhost:3000/v1/customers
 @Controller('v1/customers')
