@@ -49,4 +49,11 @@ export class CustomerService {
         },
             { upsert: true, new: true });
     }
+
+    async findAll(): Promise<Customer[]> {
+        return await this.model
+            .find({}, 'name email document')
+            .sort('name')
+            .exec();
+    }
 }

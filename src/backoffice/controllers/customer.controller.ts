@@ -19,8 +19,9 @@ export class CustomerController {
     private readonly customerService: CustomerService,) { }
 
   @Get()
-  get() {
-    return new Result(null, true, [], null);
+  async getAll() {
+    const customers = await this.customerService.findAll();
+    return new Result('Busca realizada com sucesso!', true, customers, null);
   }
 
   @Get(':document')
@@ -49,8 +50,7 @@ export class CustomerController {
 
   @Post(':document/addresses/billing')
   @UseInterceptors(new ValidatorInterceptor(new CreateAddressContract()))
-  async addBillingAddress(@Param('document') document: string, @Body() model: CreateAddressDto)
-  {
+  async addBillingAddress(@Param('document') document: string, @Body() model: CreateAddressDto) {
     try {
       await this.customerService.addBillingAddress(document, model);
       return new Result('Endereço incluído com sucesso.', true, model, null);
@@ -62,8 +62,7 @@ export class CustomerController {
 
   @Post(':document/addresses/shipping')
   @UseInterceptors(new ValidatorInterceptor(new CreateAddressContract()))
-  async addShippingAddress(@Param('document') document: string, @Body() model: CreateAddressDto)
-  {
+  async addShippingAddress(@Param('document') document: string, @Body() model: CreateAddressDto) {
     try {
       await this.customerService.addShippingAddress(document, model);
       return new Result('Endereço incluído com sucesso.', true, model, null);
@@ -75,8 +74,7 @@ export class CustomerController {
 
   @Post(':document/pets')
   @UseInterceptors(new ValidatorInterceptor(new CreatePetContract()))
-  async createPet(@Param('document') document: string, @Body() model: CreatePetDto)
-  {
+  async createPet(@Param('document') document: string, @Body() model: CreatePetDto) {
     try {
       await this.customerService.createPet(document, model);
       return new Result('Pet incluído com sucesso.', true, model, null);
@@ -88,8 +86,7 @@ export class CustomerController {
 
   @Put(':document/pets/:id')
   @UseInterceptors(new ValidatorInterceptor(new CreatePetContract()))
-  async updatePet(@Param('document') document: string, @Param('id') id: string, @Body() model: CreatePetDto)
-  {
+  async updatePet(@Param('document') document: string, @Param('id') id: string, @Body() model: CreatePetDto) {
     try {
       await this.customerService.updatePet(document, id, model);
       return new Result('Pet atualizado com sucesso.', true, model, null);
