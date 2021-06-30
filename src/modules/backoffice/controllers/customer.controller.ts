@@ -1,9 +1,7 @@
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { ValidatorInterceptor } from 'src/interceptors/validator.interceptor';
-import { CreateAddressContract } from '../contracts/customer/create-address.contract';
 import { CreateCustomerContract } from '../contracts/customer/create-customer.contract';
 import { CreatePetContract } from '../contracts/customer/create-pet.contract';
-import { CreateAddressDto } from '../dtos/create-address.dto';
 import { CreateCustomerDto } from '../dtos/create-customer.dto';
 import { CreatePetDto } from '../dtos/create-pet.dto';
 import { QueryDto } from '../dtos/query.dto';
@@ -11,7 +9,6 @@ import { Customer } from '../models/customer.model';
 import { Result } from '../models/result.models';
 import { User } from '../models/user.model';
 import { AccountService } from '../services/account.service';
-import { AddressService } from '../services/address.service';
 import { CustomerService } from '../services/customer.service';
 import { PetService } from '../services/pet.service';
 
@@ -20,7 +17,6 @@ import { PetService } from '../services/pet.service';
 export class CustomerController {
   constructor(private readonly accountService: AccountService,
     private readonly customerService: CustomerService,
-    private readonly addressService: AddressService,
     private readonly petService: PetService,) { }
 
   @Get()
@@ -56,30 +52,6 @@ export class CustomerController {
     }
     catch (error) {
       // Rollback manual
-      throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
-    }
-  }
-
-  @Post(':document/addresses/billing')
-  @UseInterceptors(new ValidatorInterceptor(new CreateAddressContract()))
-  async addBillingAddress(@Param('document') document: string, @Body() model: CreateAddressDto) {
-    try {
-      await this.addressService.addBillingAddress(document, model);
-      return new Result('Endereço incluído com sucesso.', true, model, null);
-    }
-    catch (error) {
-      throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
-    }
-  }
-
-  @Post(':document/addresses/shipping')
-  @UseInterceptors(new ValidatorInterceptor(new CreateAddressContract()))
-  async addShippingAddress(@Param('document') document: string, @Body() model: CreateAddressDto) {
-    try {
-      await this.addressService.addShippingAddress(document, model);
-      return new Result('Endereço incluído com sucesso.', true, model, null);
-    }
-    catch (error) {
       throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
     }
   }

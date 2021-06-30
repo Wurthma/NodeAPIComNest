@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AddressController } from './controllers/address.controller';
 import { CustomerController } from './controllers/customer.controller';
 import { CustomerSchema } from './schemas/customer.schema';
 import { UserSchema } from './schemas/user.schema';
@@ -20,7 +21,10 @@ import { PetService } from './services/pet.service';
         schema: UserSchema,
       }
     ])],
-  controllers: [CustomerController],
+  controllers: [
+    CustomerController,
+    AddressController,
+  ],
   providers: [
     AccountService, 
     AddressService,

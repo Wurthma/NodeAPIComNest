@@ -21,7 +21,7 @@ export class AddressService {
         if (addressType === AddressType.Billing) {
             return await this.model.findOneAndUpdate({ document }, {
                 $set: {
-                    shippingAddress: data,
+                    billingAddress: data,
                 },
             },
                 { upsert: true });
