@@ -1,7 +1,9 @@
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { ValidatorInterceptor } from 'src/interceptors/validator.interceptor';
 import { CreateCustomerContract } from '../../contracts/customer/create-customer.contract';
+import { UpdateCustomerContract } from '../../contracts/customer/update-customer.contract';
 import { CreateCustomerDto } from '../../dtos/customer/create-customer.dto';
+import { UpdateCustomerDto } from '../../dtos/customer/update-customer.dto';
 import { QueryDto } from '../../dtos/query.dto';
 import { Customer } from '../../models/customer.model';
 import { Result } from '../../models/result.models';
@@ -53,8 +55,15 @@ export class CustomerController {
   }
 
   @Put(':document')
-  put(@Param('document') document, @Body() body: CreateCustomerDto) {
-    return new Result('Cliente alterado com sucesso', true, body, null);
+  @UseInterceptors(new ValidatorInterceptor(new UpdateCustomerContract()))
+  async update(@Param('document') document, @Body() model: UpdateCustomerDto) {
+    try {
+      await this.customerService.update(document, model);
+      return new Result('Cliente atualizado com sucesso!', true, model, null);
+    }
+    catch (error) {
+      throw new HttpException(new Result('Não foi possível atualizar os dados do cliente', false, null, error), HttpStatus.BAD_REQUEST);
+    }
   }
 
   @Delete()
