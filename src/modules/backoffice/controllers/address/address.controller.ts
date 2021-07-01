@@ -1,9 +1,9 @@
 import { Body, Controller, HttpException, HttpStatus, Param, Post, UseInterceptors } from '@nestjs/common';
 import { ValidatorInterceptor } from 'src/interceptors/validator.interceptor';
-import { CreateAddressContract } from '../contracts/customer/create-address.contract';
-import { CreateAddressDto } from '../dtos/create-address.dto';
-import { Result } from '../models/result.models';
-import { AddressService } from '../services/address.service';
+import { CreateAddressContract } from '../../contracts/address/create-address.contract';
+import { CreateAddressDto } from '../../dtos/address/create-address.dto';
+import { Result } from '../../models/result.models';
+import { AddressService } from '../../services/address.service';
 
 @Controller('v1/customers/')
 export class AddressController {

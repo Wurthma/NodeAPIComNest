@@ -1,13 +1,13 @@
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { ValidatorInterceptor } from 'src/interceptors/validator.interceptor';
-import { CreateCustomerContract } from '../contracts/customer/create-customer.contract';
-import { CreateCustomerDto } from '../dtos/create-customer.dto';
-import { QueryDto } from '../dtos/query.dto';
-import { Customer } from '../models/customer.model';
-import { Result } from '../models/result.models';
-import { User } from '../models/user.model';
-import { AccountService } from '../services/account.service';
-import { CustomerService } from '../services/customer.service';
+import { CreateCustomerContract } from '../../contracts/customer/create-customer.contract';
+import { CreateCustomerDto } from '../../dtos/customer/create-customer.dto';
+import { QueryDto } from '../../dtos/query.dto';
+import { Customer } from '../../models/customer.model';
+import { Result } from '../../models/result.models';
+import { User } from '../../models/user.model';
+import { AccountService } from '../../services/account.service';
+import { CustomerService } from '../../services/customer.service';
 
 // localhost:3000/v1/customers
 @Controller('v1/customers')
