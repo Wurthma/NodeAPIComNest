@@ -52,7 +52,7 @@ $ npm run test:cov
     - `npm i --save @nestjs/mongoose mongoose`
 
 - TypeORM with Postgres
-    - `npm install --save @nestjs/typeorm typeorm postgres`
+    - `npm install --save @nestjs/typeorm typeorm pg`
 
 ## MongoDB & Docker
 - The application makes use of MongoDB with docker. To install the latest version of mongodb with docker (latest) use the command:
@@ -67,10 +67,16 @@ $ npm run test:cov
 
 ```typescript
 export const GLOBAL_SECRETS = {
-    mongodbUser: 'wurthmann',
-    mongodbPassword: '5777308',
+    mongodbUser: 'YourUser',
+    mongodbPassword: 'YourPassword',
     mongodbHost: 'localhost',
     mongodbPort: '27017',
+    mongodbDatabase: 'MongoDbName',
+    postgresUser: 'YouPostgresUser',
+    postgresPassword: 'YourPostgresPass',
+    postgresHost: 'localhost',
+    postgresPort: 5432,
+    postgresDatabase: 'PostgresDbName',
     saltKey: 'SOME GUID SALT KEY'
 }
 ```
