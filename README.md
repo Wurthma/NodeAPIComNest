@@ -51,6 +51,9 @@ $ npm run test:cov
 - Mongoose for MongoDB
     - `npm i --save @nestjs/mongoose mongoose`
 
+- TypeORM with Postgres
+    - `npm install --save @nestjs/typeorm typeorm postgres`
+
 ## MongoDB & Docker
 - The application makes use of MongoDB with docker. To install the latest version of mongodb with docker (latest) use the command:
 	- `docker pull mongo`
