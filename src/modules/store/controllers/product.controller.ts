@@ -3,7 +3,7 @@ import { ProductService } from '../services/product.service';
 import { Product } from '../entities/product.entity';
 import { Result } from 'src/modules/backoffice/models/result.models';
 
-@Controller('v1/products')
+@Controller('store/v1/products')
 export class ProductController {
     constructor(private readonly service: ProductService) { }
 

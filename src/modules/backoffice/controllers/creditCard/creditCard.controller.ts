@@ -5,7 +5,7 @@ import { CreateCreditCardDto } from '../../dtos/creditCard/create-creditCard.dto
 import { Result } from '../../models/result.models';
 import { CreditCardService } from '../../services/creditCard.service';
 
-@Controller('v1/customers')
+@Controller('backoffice/v1/customers')
 export class CreditCardController {
   constructor(private readonly creditCardService: CreditCardService,) { }
   

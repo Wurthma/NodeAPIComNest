@@ -5,7 +5,7 @@ import { CreateAddressDto } from '../../dtos/address/create-address.dto';
 import { Result } from '../../models/result.models';
 import { AddressService } from '../../services/address.service';
 
-@Controller('v1/customers/')
+@Controller('backoffice/v1/customers/')
 export class AddressController {
   constructor(private readonly addressService: AddressService,) { }
 

@@ -5,7 +5,7 @@ import { CreatePetDto } from '../../dtos/pet/create-pet.dto';
 import { Result } from '../../models/result.models';
 import { PetService } from '../../services/pet.service';
 
-@Controller('v1/customers/')
+@Controller('backoffice/v1/customers/')
 export class PetController {
   constructor(private readonly petService: PetService,) { }
 
