@@ -7,7 +7,7 @@ import { OrderItemService } from '../services/order-item.service';
 import { Result } from 'src/modules/backoffice/models/result.models';
 import { OrderItemDto } from '../dtos/order/order-item.dto';
 
-@Controller('v1/orders')
+@Controller('store/v1/orders')
 export class OrderController {
     constructor(
         private readonly orderService: OrderService,
@@ -39,7 +39,7 @@ export class OrderController {
     async post(@Body() model: OrderItemDto[]) {
         try {
             let order = new Order();
-            order.customer = '12345678911';
+            order.customer = '11111111111';
             order.date = new Date();
             order.number = '1B2D3F5';
             order.items = [];

@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { OrderController } from './controllers/order.controller';
 import { ProductController } from './controllers/product.controller';
 import { OrderItem } from './entities/order-item.entity';
 import { Order } from './entities/order.entity';
@@ -21,6 +22,7 @@ import { ProductService } from './services/product.service';
     ],
     controllers: [
         ProductController,
+        OrderController,
     ],
 })
 export class StoreModule {}
