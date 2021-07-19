@@ -11,5 +11,7 @@ CREATE TABLE products (
     id        INT NOT NULL,
     title       varchar(80) NULL,
     description varchar(4000) NULL,
+    price numeric NOT NULL,
+    "quantityOnHand" numeric NOT NULL
     CONSTRAINT products_pk PRIMARY KEY(id)
 );
