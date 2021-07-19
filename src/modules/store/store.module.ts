@@ -4,6 +4,8 @@ import { ProductController } from './controllers/product.controller';
 import { OrderItem } from './entities/order-item.entity';
 import { Order } from './entities/order.entity';
 import { Product } from './entities/product.entity';
+import { OrderItemService } from './services/order-item.service';
+import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
 
 @Module({
@@ -14,6 +16,8 @@ import { ProductService } from './services/product.service';
     ])],
     providers: [
         ProductService,
+        OrderService,
+        OrderItemService,
     ],
     controllers: [
         ProductController,
