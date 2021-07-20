@@ -54,6 +54,9 @@ $ npm run test:cov
 - TypeORM with Postgres
     - `npm install --save @nestjs/typeorm typeorm pg`
 
+- Passport to authenticate with JWT Bearer
+    - `npm install --save @nestjs/passport passport passport-http-bearer`
+
 ## MongoDB & Docker
 - The application makes use of MongoDB with docker. To install the latest version of mongodb with docker (latest) use the command:
 	- `docker pull mongo`
