@@ -56,6 +56,7 @@ $ npm run test:cov
 
 - Passport to authenticate with JWT Bearer
     - `npm install --save @nestjs/passport passport passport-http-bearer`
+    - `npm install --save @nestjs/jwt passport-jwt`
 
 ## MongoDB & Docker
 - The application makes use of MongoDB with docker. To install the latest version of mongodb with docker (latest) use the command:
