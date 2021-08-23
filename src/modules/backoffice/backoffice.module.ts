@@ -1,5 +1,10 @@
 import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose';
+import { PassportModule } from '@nestjs/passport';
+import { GLOBAL_SECRETS } from 'src/secrets';
+import { AuthService } from 'src/shared/services/auth.service';
+import { JwtStrategy } from 'src/shared/strategies/jwt.strategy';
 import { AddressController } from './controllers/address/address.controller';
 import { CreditCardController } from './controllers/creditCard/creditCard.controller';
 import { CustomerController } from './controllers/customer/customer.controller';
@@ -14,7 +19,15 @@ import { PetService } from './services/pet.service';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([
+    PassportModule.register({ defaultStrategy: 'jwt' }),
+    JwtModule.register({
+      secretOrPrivateKey: GLOBAL_SECRETS.jwtStrategyKey,
+      signOptions: {
+        expiresIn: 3600
+      }
+    }),
+    MongooseModule.forFeature(
+    [
       {
         name: 'Customer',
         schema: CustomerSchema,
@@ -36,6 +49,8 @@ import { PetService } from './services/pet.service';
     CreditCardService,
     CustomerService,
     PetService,
+    AuthService,
+    JwtStrategy,
   ],
 })
 export class BackofficeModule { }
