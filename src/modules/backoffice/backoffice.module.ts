@@ -5,6 +5,7 @@ import { PassportModule } from '@nestjs/passport';
 import { GLOBAL_SECRETS } from 'src/secrets';
 import { AuthService } from 'src/shared/services/auth.service';
 import { JwtStrategy } from 'src/shared/strategies/jwt.strategy';
+import { AccountController } from './controllers/account/account.controller';
 import { AddressController } from './controllers/address/address.controller';
 import { CreditCardController } from './controllers/creditCard/creditCard.controller';
 import { CustomerController } from './controllers/customer/customer.controller';
@@ -38,6 +39,7 @@ import { PetService } from './services/pet.service';
       }
     ])],
   controllers: [
+    AccountController,
     AddressController,
     CreditCardController,
     CustomerController,

@@ -1,12 +1,15 @@
-import { Controller, Get, UseGuards } from "@nestjs/common";
+import { Controller, Get, Post, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
+import { AuthService } from "src/shared/services/auth.service";
 
 @Controller('backoffice/v1/accounts/')
 export class AccountController {
-    /**
-     *
-     */
-    constructor() {}
+    constructor(private authService: AuthService) {}
+
+    @Post('')
+    async createToken(): Promise<any> {
+        return await this.authService.createToken();
+    }
 
     @Get('')
     @UseGuards(AuthGuard())
