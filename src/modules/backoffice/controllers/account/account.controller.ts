@@ -1,6 +1,7 @@
-import { Controller, Get, Post, UseGuards } from "@nestjs/common";
+import { Controller, Get, Post, Req, UseGuards, UseInterceptors } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { JwtAuthGuard } from "src/shared/guards/auth.guard";
+import { RoleInterceptor } from "src/shared/interceptors/role.interceptor";
 import { AuthService } from "src/shared/services/auth.service";
 
 @Controller('backoffice/v1/accounts/')
@@ -14,6 +15,7 @@ export class AccountController {
 
     @Get('')
     @UseGuards(JwtAuthGuard)
+    @UseInterceptors(new RoleInterceptor(['admin']))
     findAll() {
         return [];
     }

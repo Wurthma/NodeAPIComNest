@@ -1,3 +1,6 @@
 export interface JwtPayload {
-    username: String;
+    document: string;
+    email: string;
+    image: string;
+    roles: string[];
 }
