@@ -58,6 +58,9 @@ $ npm run test:cov
     - `npm install --save @nestjs/passport passport passport-http-bearer`
     - `npm install --save @nestjs/jwt passport-jwt`
 
+- Typescript Guid:
+    - `npm i guid-typescript --save`
+
 ## MongoDB & Docker
 - The application makes use of MongoDB with docker. To install the latest version of mongodb with docker (latest) use the command:
 	- `docker pull mongo`
