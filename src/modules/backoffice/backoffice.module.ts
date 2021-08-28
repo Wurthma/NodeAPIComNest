@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PassportModule } from '@nestjs/passport';
-import { GLOBAL_SECRETS } from 'src/secrets';
 import { AuthService } from 'src/shared/services/auth.service';
 import { JwtStrategy } from 'src/shared/strategies/jwt.strategy';
 import { AccountController } from './controllers/account/account.controller';
@@ -22,7 +21,7 @@ import { PetService } from './services/pet.service';
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
-      secretOrPrivateKey: GLOBAL_SECRETS.jwtStrategyKey,
+      secretOrPrivateKey: process.env.JWT_STRATEGY_KEY,
       signOptions: {
         expiresIn: 3600
       }

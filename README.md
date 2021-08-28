@@ -51,6 +51,9 @@ $ npm run test:cov
 - Mongoose for MongoDB
     - `npm i --save @nestjs/mongoose mongoose`
 
+- NestJS/config to save enviroments variables (relys on dotenv). Documentation: https://docs.nestjs.com/techniques/configuration
+    - `npm i --save @nestjs/config`
+
 - TypeORM with Postgres
     - `npm install --save @nestjs/typeorm typeorm pg`
 
@@ -70,20 +73,25 @@ $ npm run test:cov
 	- To start the same container again: `docker start mongodb`
 
 ## Sensitive data
-- For the application to work correctly it is necessary to create the src\secrets.ts file containing the sensitive data used by the application. The file must contain the following properties:
+- For the application to work correctly it is necessary to use `.env` files containing the sensitive data used by the application. The file must contain the following properties:
+
+```bash
+MONGO_DB_USER=wurthmann
+MONGO_DB_PASSWORD=5777308
+MONGO_DB_HOST=localhost
+MONGO_DB_PORT=27017
+MONGO_DB_NAME=petshop
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=5777308
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB_NAME=petshop_store
+SALT_KEY=SOME GUID SALT KEY
+JWT_STRATEGY_KEY=ae3883bafe10
+```
+
+The suported `.env` files is in **app.module.ts**:
 
 ```typescript
-export const GLOBAL_SECRETS = {
-    mongodbUser: 'YourUser',
-    mongodbPassword: 'YourPassword',
-    mongodbHost: 'localhost',
-    mongodbPort: '27017',
-    mongodbDatabase: 'MongoDbName',
-    postgresUser: 'YouPostgresUser',
-    postgresPassword: 'YourPostgresPass',
-    postgresHost: 'localhost',
-    postgresPort: 5432,
-    postgresDatabase: 'PostgresDbName',
-    saltKey: 'SOME GUID SALT KEY'
-}
+envFilePath: ['.env', '.env.production', '.env.homolog', '.env.development', '.env.development.local'],
 ```
