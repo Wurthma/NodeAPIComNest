@@ -60,4 +60,11 @@ export class AccountController {
             throw new HttpException(new Result('Não foi possível alterar sua senha', false, null, error), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @Post('refresh')
+    @UseGuards(JwtAuthGuard)
+    async refreshToken(@Req() request): Promise<any> {
+        const token = await this.authService.createToken(request.user.document, request.user.email, request.user.image, request.user.roles);
+        return new Result(null, true, token, null);
+    }
 }
