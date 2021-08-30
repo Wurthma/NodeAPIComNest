@@ -54,6 +54,9 @@ $ npm run test:cov
 - NestJS/config to save enviroments variables (relys on dotenv). Documentation: https://docs.nestjs.com/techniques/configuration
     - `npm i --save @nestjs/config`
 
+- NestJS/swagger for API documentation
+    - `npm install @nestjs/swagger swagger-ui-express --save`
+
 - TypeORM with Postgres
     - `npm install --save @nestjs/typeorm typeorm pg`
 
