@@ -29,6 +29,7 @@
     "@nestjs/passport": "^8.0.0",
     "@nestjs/platform-express": "^7.6.15",
     "@nestjs/typeorm": "^7.1.5",
+    "cache-manager": "^3.4.4",
     "guid-typescript": "^1.0.9",
     "joi": "^17.4.0",
     "md5-typescript": "^1.0.5",

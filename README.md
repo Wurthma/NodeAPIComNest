@@ -64,8 +64,11 @@ $ npm run test:cov
 - Typescript Guid:
     - `npm i guid-typescript --save`
 
-- MD5 to encrypt users password:
+- MD5 to encrypt users password
     - `npm install md5-typescript --save`
+
+- Cache manager
+    - `npm install cache-manager --save`
 
 ## MongoDB & Docker
 - The application makes use of MongoDB with docker. To install the latest version of mongodb with docker (latest) use the command:

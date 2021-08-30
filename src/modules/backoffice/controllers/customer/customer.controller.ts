@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, UseInterceptors } from '@nestjs/common';
+import { Body, CacheInterceptor, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { Md5 } from 'md5-typescript';
 import { ValidatorInterceptor } from 'src/interceptors/validator.interceptor';
 import { CreateCustomerContract } from '../../contracts/customer/create-customer.contract';
@@ -20,6 +20,7 @@ export class CustomerController {
     private readonly customerService: CustomerService,) { }
 
   @Get()
+  @UseInterceptors(CacheInterceptor)
   async getAll() {
     const customers = await this.customerService.findAll();
     return new Result('Busca realizada com sucesso!', true, customers, null);
