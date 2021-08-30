@@ -1,4 +1,4 @@
-import { Body, Controller, HttpException, HttpStatus, Param, Post, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, UseInterceptors } from '@nestjs/common';
 import { ValidatorInterceptor } from 'src/interceptors/validator.interceptor';
 import { CreateAddressContract } from '../../contracts/address/create-address.contract';
 import { CreateAddressDto } from '../../dtos/address/create-address.dto';
@@ -30,6 +30,19 @@ export class AddressController {
     }
     catch (error) {
       throw new HttpException(new Result('Não foi possível realizar seu cadastro', false, null, error), HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @Get('search/:zipcode')
+  async search(@Param('zipcode') zipcode) {
+    try
+    {
+      const response = await this.addressService.getAddressByZipCode(zipcode).toPromise();
+      return new Result(null, true, response.data, null);
+    }
+    catch (error) 
+    {
+      throw new HttpException(new Result('Não foi possível localizar seu endereço.', false, null, error), HttpStatus.BAD_REQUEST);
     }
   }
 }
