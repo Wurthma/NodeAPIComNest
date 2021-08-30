@@ -70,6 +70,9 @@ $ npm run test:cov
 - Cache manager
     - `npm install cache-manager --save`
 
+- Data compression
+    - `npm install compression --save`
+
 ## MongoDB & Docker
 - The application makes use of MongoDB with docker. To install the latest version of mongodb with docker (latest) use the command:
 	- `docker pull mongo`
