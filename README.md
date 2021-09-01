@@ -57,6 +57,9 @@ $ npm run test:cov
 - NestJS/swagger for API documentation
     - `npm install @nestjs/swagger swagger-ui-express --save`
 
+- NestJS/CQRS
+    - `npm install @nestjs/cqrs --save`
+
 - TypeORM with Postgres
     - `npm install --save @nestjs/typeorm typeorm pg`
 
