@@ -92,17 +92,17 @@ $ npm run test:cov
 
 ```bash
 MONGO_DB_USER=wurthmann
-MONGO_DB_PASSWORD=5777308
+MONGO_DB_PASSWORD=YourPassword
 MONGO_DB_HOST=localhost
 MONGO_DB_PORT=27017
 MONGO_DB_NAME=petshop
 POSTGRES_USER=postgres
-POSTGRES_PASSWORD=5777308
+POSTGRES_PASSWORD=YourPassword
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 POSTGRES_DB_NAME=petshop_store
 SALT_KEY=SOME GUID SALT KEY
-JWT_STRATEGY_KEY=ae3883bafe10
+JWT_STRATEGY_KEY=1e3883bafe60
 ```
 
 The suported `.env` files is in **app.module.ts**:
