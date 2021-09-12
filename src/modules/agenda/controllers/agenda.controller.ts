@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from "@nestjs/common";
 import { RoomBookService } from "../services/room-book.service";
 
-@Controller('backoffice/v1/rooms')
+@Controller('agenda/v1/rooms')
 export class AgendaController {
     constructor(
         private readonly service: RoomBookService
