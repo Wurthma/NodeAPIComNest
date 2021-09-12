@@ -7,7 +7,7 @@ export class Room extends AggregateRoot {
         super();
     }
 
-    book(customerId: string) {
+    book(customerId: string, date: Date) {
         this.apply(new RoomBookedEvent(customerId, this.id));
     }
 }

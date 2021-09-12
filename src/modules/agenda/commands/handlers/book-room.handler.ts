@@ -1,3 +1,4 @@
+import { HttpException, HttpStatus } from "@nestjs/common";
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
 import { RoomRepository } from "../../repositories/room.repository";
 import { BookRoomCommand } from "../book-room.command";
@@ -10,9 +11,14 @@ export class BookRoomHandler implements ICommandHandler<BookRoomCommand> {
     {}
 
     async execute(command: BookRoomCommand) {
-        console.log('BookRoomHandler:execute - Executing command...');
+        const room = await this.repository.checkAvailability(command.roomId, command.date);
 
-        const room = await this.repository.findOneById(command.roomId);
-        room.book(command.customerId);
+        if (room) {
+            room.book(command.customerId, command.date);
+            await this.repository.book(room);
+            return;
+        }
+
+        throw new HttpException('Sala não disponível', HttpStatus.BAD_REQUEST);
     }
 }
