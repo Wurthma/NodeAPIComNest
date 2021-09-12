@@ -10,7 +10,7 @@ export class BookRoomHandler implements ICommandHandler<BookRoomCommand> {
     {}
 
     async execute(command: BookRoomCommand) {
-        console.log('BookRoomHandler:execute - Executando o comando...');
+        console.log('BookRoomHandler:execute - Executing command...');
 
         const room = await this.repository.findOneById(command.roomId);
         room.book(command.customerId);
