@@ -1,0 +1,487 @@
+{
+	"info": {
+		"_postman_id": "dc184d1b-446f-4a9a-a535-114664041b4b",
+		"name": "PetshopAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "backoffice",
+			"item": [
+				{
+					"name": "CurtomerCreate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"George Wurthmann\",\r\n    \"document\":\"11111111111\",\r\n    \"email\":\"george@mail.com\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/backoffice/v1/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"backoffice",
+								"v1",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"12345678900\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/backoffice/v1/accounts/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"backoffice",
+								"v1",
+								"accounts",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomerGet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/backoffice/v1/customers/11111111111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"backoffice",
+								"v1",
+								"customers",
+								"11111111111"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomerUpdate",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"George Henrique Wurthmann\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/backoffice/v1/customers/11111111111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"backoffice",
+								"v1",
+								"customers",
+								"11111111111"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomersQuery",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": {\r\n        \"document\":\"11111111111\"\r\n    },\r\n    \"fields\":\"name document\",\r\n    \"sort\":\"name\",\r\n    \"skip\":0,\r\n    \"take\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/backoffice/v1/customers/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"backoffice",
+								"v1",
+								"customers",
+								"query"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomerGetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/backoffice/v1/customers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"backoffice",
+								"v1",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomerBillingAddressCreate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zipCode\":\"12345223\",\r\n    \"street\":\"Rua Mendarana\",\r\n    \"number\":\"321\",\r\n    \"complement\":\"Ap 45\",\r\n    \"neighborhood\":\"Ouro Verde\",\r\n    \"city\":\"Campinas\",\r\n    \"state\":\"SP\",\r\n    \"country\":\"BRA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/backoffice/v1/customers/11111111111/addresses/billing",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"backoffice",
+								"v1",
+								"customers",
+								"11111111111",
+								"addresses",
+								"billing"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomerShippingAddressCreate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zipCode\":\"12345223\",\r\n    \"street\":\"Rua Mendarana\",\r\n    \"number\":\"321\",\r\n    \"complement\":\"Ap 45\",\r\n    \"neighborhood\":\"Ouro Verde\",\r\n    \"city\":\"Campinas\",\r\n    \"state\":\"SP\",\r\n    \"country\":\"BRA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/backoffice/v1/customers/11111111111/addresses/shipping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"backoffice",
+								"v1",
+								"customers",
+								"11111111111",
+								"addresses",
+								"shipping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomerPetCreate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Zattara\",\r\n    \"gender\":\"fêmea\",\r\n    \"kind\":\"cat\",\r\n    \"race\":\"N/A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/backoffice/v1/customers/11111111111/pets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"backoffice",
+								"v1",
+								"customers",
+								"11111111111",
+								"pets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomerPetUpdate",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Zattara\",\r\n    \"gender\":\"fêmea\",\r\n    \"kind\":\"gato\",\r\n    \"race\":\"N/A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/backoffice/v1/customers/11111111111/pets/60da71f2ebcbec285c7a616e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"backoffice",
+								"v1",
+								"customers",
+								"11111111111",
+								"pets",
+								"60da71f2ebcbec285c7a616e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomerCreditCardCreate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"holder\":\"George Wurthmann\",\r\n    \"number\":\"1111222233334444\",\r\n    \"expiration\":\"01/06/2027\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/backoffice/v1/customers/11111111111/credit-cards",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"backoffice",
+								"v1",
+								"customers",
+								"11111111111",
+								"credit-cards"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "store",
+			"item": [
+				{
+					"name": "ProductGet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/store/v1/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"store",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductCreate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Coleira pequena\",\r\n    \"description\":\"Coleira de couro para cachorros de pequeno porte.\",\r\n    \"price\":49.50,\r\n    \"quantityOnHand\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/store/v1/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"store",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductUpdate",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Golden sabor carne - Cachorros\",\r\n    \"description\":\"Ração sabor carne de 10KG para cachorros.\",\r\n    \"price\":65.89,\r\n    \"quantityOnHand\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/store/v1/products/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"store",
+								"v1",
+								"products",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductDelete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/store/v1/products/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"store",
+								"v1",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OrderCreate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"product\": 3,\r\n        \"quantity\": 2\r\n    },\r\n    {\r\n        \"product\": 4,\r\n        \"quantity\": 1\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/store/v1/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"store",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "agenda",
+			"item": []
+		}
+	]
+}
